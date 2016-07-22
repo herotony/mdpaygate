@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.saosinhome.md.mdpaygate.dao.Model">
+    <resultMap id="Queue" type="com.saosinhome.md.mdpaygate.dao.Model.QueueModel">
+        <result column="queue_id" property="queueID" jdbcType="BIGINT" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="consume_status" property="consumeStatus" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+        <result column="locker" property="locker" jdbcType="VARCHAR" />
+        <result column="unique_sign" property="uniqueSign" jdbcType="VARCHAR" />
+        <result column="next_consume_time" property="nextConsumeTime" jdbcType="BIGINT" />
+        <result column="last_consume_time" property="lastConsumeTime" jdbcType="BIGINT" />
+        <result column="consume_count" property="consumeCount" jdbcType="INTEGER" />
+        <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="createQueue" parameterType="com.wowo.mdpaygate.dao.data.QueueDO">
+        insert into  md_pay_queue(
+        `type`,
+        `status`,
+        consume_status,
+        create_time,
+        update_time,
+        `locker`,
+        `unique_sign`,
+        next_consume_time,
+        last_consume_time,
+        consume_count,
+        `trade_no`
+        )
+        values (
+        #{type,jdbcType=INTEGER},
+        #{status,jdbcType=INTEGER},
+        #{consumeStatus,jdbcType=INTEGER},
+        #{createTime,jdbcType=BIGINT},
+        #{updateTime,jdbcType=BIGINT},
+        #{locker,jdbcType=VARCHAR},
+        #{uniqueSign,jdbcType=VARCHAR},
+        #{ nextConsumeTime,jdbcType=BIGINT},
+        #{lastConsumeTime,jdbcType=BIGINT},
+        #{consumeCount,jdbcType=INTEGER},
+        #{tradeNo,jdbcType=VARCHAR}
+        )
+        <selectKey resultType="long" keyProperty="queueID">
+            <![CDATA[SELECT LAST_INSERT_ID() AS ID ]]>
+        </selectKey>
+    </insert>
+
+</mapper>

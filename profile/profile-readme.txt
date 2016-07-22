@@ -1,0 +1,3 @@
+该文件中的以env.properties.xxxx开头的文件都是在maven编译时用其中的变量通过source-filter替换approot
+模块下的resources目录下的app.properties中的变量，而app.properties中的变量最终会被maven的
+config-placeholder插件替换掉各个模块中的xml配置文件中的变量。

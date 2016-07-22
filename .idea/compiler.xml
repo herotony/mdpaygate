@@ -22,10 +22,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="mdpaygate" />
+        <module name="approot" />
+        <module name="dao" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="approot" target="1.5" />
+      <module name="dao" target="1.5" />
       <module name="mdpaygate" target="1.5" />
     </bytecodeTargetLevel>
   </component>

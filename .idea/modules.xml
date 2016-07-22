@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/approot/approot.iml" filepath="$PROJECT_DIR$/approot/approot.iml" />
       <module fileurl="file://$PROJECT_DIR$/dao/dao.iml" filepath="$PROJECT_DIR$/dao/dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/mdpaygate.iml" filepath="$PROJECT_DIR$/mdpaygate.iml" />
     </modules>
