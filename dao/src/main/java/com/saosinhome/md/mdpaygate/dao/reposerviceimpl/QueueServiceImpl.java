@@ -1,6 +1,7 @@
 package com.saosinhome.md.mdpaygate.dao.reposerviceimpl;
 
 import com.saosinhome.md.mdpaygate.dao.Model.QueueModel;
+import com.saosinhome.md.mdpaygate.dao.reposervice.DataSource;
 import com.saosinhome.md.mdpaygate.dao.reposervice.QueueService;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
@@ -9,6 +10,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
  */
 public class QueueServiceImpl extends SqlSessionDaoSupport implements QueueService  {
 
+    @DataSource(name = DataSource.master)
     public QueueModel create(QueueModel queueData){
 
         if(queueData==null)

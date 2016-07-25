@@ -17,5 +17,11 @@
             <value>${dataSource.jndi.master}</value>
         </property>
     </bean>
+    <bean id="readDataSource1" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName">
+            <value>${dataSource.jndi.slave_1}</value>
+        </property>
+    </bean>
+
 
 </beans>

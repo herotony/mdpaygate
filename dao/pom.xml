@@ -12,6 +12,10 @@
     <groupId>com.saosinhome.md.mdpaygate</groupId>
     <artifactId>dao</artifactId>
 
+    <!--
+       除了日志组件可以放在根pom文件供所有其他模块使用，我们更应该仅在根pom中做版本管理，而具体的依赖则在
+       各模块自身的pom文件中去定义引用。
+    -->
    <dependencies>
        <dependency>
            <groupId>org.mybatis</groupId>
@@ -22,6 +26,17 @@
            <groupId>org.mybatis</groupId>
            <artifactId>mybatis-spring</artifactId>
            <version>1.2.2</version>
+       </dependency>
+       <!--mybatis封装了该jar包，用以连接数据库-->
+       <dependency>
+           <groupId>mysql</groupId>
+           <artifactId>mysql-connector-java</artifactId>
+           <version>5.1.34</version>
+       </dependency>
+       <!--才能启用spring框架下的jndi数据源配置-->
+       <dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-context</artifactId>
        </dependency>
    </dependencies>
 </project>

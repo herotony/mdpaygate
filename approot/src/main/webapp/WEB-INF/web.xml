@@ -13,8 +13,8 @@
     <!--设置Spring的初始化文件，支持通配符：比如：classpath:**/appcontext-*.xml-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <!--param-value中填入具体的自定义初始化文件的位置-->
-        <param-value>classpath:</param-value>
+        <!--param-value中填入具体的自定义初始化文件的位置，就是初始实例化相关的业务bean-->
+        <param-value>mdpaygate-root-context.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextCleanupListener</listener-class>
@@ -25,7 +25,7 @@
         <param-name>logbackConfigLocation</param-name>
         <param-value>WEB-INF/classes/logback.xml</param-value>
     </context-param>
-    <!--需要引入logback-ext-spring组件-->
+    <!--需要引入logback-ext-spring组件,在springMVC框架上启动日志监听-->
     <listener>
         <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
     </listener>
