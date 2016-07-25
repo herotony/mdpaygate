@@ -14,7 +14,8 @@
 
     <properties>
         <spring.version>3.2.11.RELEASE</spring.version>
-        <war.filename>mdpaygate</war.filename>
+        <logback.version>1.1.2</logback.version>
+        <war.filename>mdpaygate-saosinhome-snapshot</war.filename>
     </properties>
 
     <dependencyManagement>
@@ -27,65 +28,21 @@
           <!-- spring framework -->
           <dependency>
               <groupId>org.springframework</groupId>
-              <artifactId>spring-core</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-beans</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-aop</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-context</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-context-support</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-tx</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-jdbc</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-web</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-orm</artifactId>
-              <version>${spring.version}</version>
-          </dependency>
-          <dependency>
-              <groupId>org.springframework</groupId>
               <artifactId>spring-webmvc</artifactId>
               <version>${spring.version}</version>
           </dependency>
+          <!--实现了slf4j接口，自动引入相关的slf4j-api,logback-core等jar包-->
           <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-test</artifactId>
-              <version>${spring.version}</version>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-classic</artifactId>
+              <version>${logback.version}</version>
           </dependency>
+          <!--用于在springMVC框架中启动logback日志监听服务-->
           <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-expression</artifactId>
-              <version>${spring.version}</version>
+              <groupId>org.logback-extensions</groupId>
+              <artifactId>logback-ext-spring</artifactId>
+              <version>0.1.1</version>
           </dependency>
-
       </dependencies>
     </dependencyManagement>
 

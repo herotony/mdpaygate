@@ -17,36 +17,5 @@
             <value>${dataSource.jndi.master}</value>
         </property>
     </bean>
-    <bean id="readDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName">
-            <value>${dataSource.jndi.slave_1}</value>
-        </property>
-    </bean>
-    <bean id="dataSource" class="com.tuan.core.common.datasource.MultipleRoutingDataSource">
-        <property name="targetDataSources">
-            <map>
-                <entry key="master" value-ref="writeDataSource"/>
-                <entry key="slave_1" value-ref="readDataSource"/>
-            </map>
-        </property>
-    </bean>
 
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
-        <property name="dataSource" ref="dataSource"></property>
-        <property name="defaultTimeout" value="60"/>
-    </bean>
-
-    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
-        <property name="transactionManager" ref="transactionManager"></property>
-    </bean>
-
-    <bean id="serviceTemplate" class="com.tuan.core.common.template.ServiceTemplateImpl"/>
-
-    <!-- mybatis config -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="classpath:mybatis/mdpaygate-root.xml" />
-    </bean>
-    <!-- mybatis config end -->
-    <import resource="classpath:bean/mdpaygate-dao-bean.xml" />
 </beans>

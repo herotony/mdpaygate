@@ -17,7 +17,7 @@
         <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
     </resultMap>
 
-    <insert id="createQueue" parameterType="com.wowo.mdpaygate.dao.data.QueueDO">
+    <insert id="createQueue" parameterType="com.saosinhome.md.mdpaygate.dao.Model.QueueModel">
         insert into  md_pay_queue(
         `type`,
         `status`,

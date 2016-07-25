@@ -13,6 +13,25 @@
     <artifactId>approot</artifactId>
     <packaging>war</packaging>
 
+    <dependencies>
+        <!--自动引入其余8个spring相关jar包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <!--用于在springMVC框架中启动日志监听服务-->
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+        </dependency>
+        <!--自动引入slf4j-api,core,commons-logging 3个相关jar包-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+    </dependencies>
+
     <!-- build part start -->
     <build>
         <finalName>${war.filename}</finalName>
