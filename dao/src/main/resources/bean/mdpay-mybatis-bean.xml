@@ -42,7 +42,7 @@
     </bean>
     <aop:config>
         <!--用于解析各方法的注解得到要切换的数据源-->
-        <aop:pointcut id="reposervice" expression="execution(* com.saosinhome.md.mdpaygate.dao.reposervice.*.*(..))"/>
+        <aop:pointcut id="reposervice" expression="execution(*  com.saosinhome.md.mdpaygate.dao.reposerviceimpl.*Impl.*(..))"/>
         <!--第一步切换数据源,order="1",属于前置拦截器-->
         <aop:advisor advice-ref="dataSourceExchange" pointcut-ref="reposervice" order="1"/>
         <!--第二步事务管理-->

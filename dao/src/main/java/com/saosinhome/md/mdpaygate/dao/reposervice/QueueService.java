@@ -7,6 +7,5 @@ import com.saosinhome.md.mdpaygate.dao.Model.QueueModel;
  */
 public interface QueueService {
 
-    @DataSource(name = DataSource.master)
     public QueueModel create(QueueModel queueData);
 }
