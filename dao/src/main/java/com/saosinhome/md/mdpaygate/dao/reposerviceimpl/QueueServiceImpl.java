@@ -10,7 +10,6 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
  */
 public class QueueServiceImpl extends SqlSessionDaoSupport implements QueueService  {
 
-    @DataSource(name = DataSource.master)
     public QueueModel create(QueueModel queueData){
 
         if(queueData==null)

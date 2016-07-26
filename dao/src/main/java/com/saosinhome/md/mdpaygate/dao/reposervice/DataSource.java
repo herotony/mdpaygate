@@ -11,9 +11,13 @@ import java.lang.annotation.*;
 @Documented
 public @interface DataSource {
 
-    String name() default DataSource.master;
+     String  name() default DataSource.master;
 
-    public static String master="writeDataSource";
-    public static String slave1="readDataSource1";
-    public static String slave2="readDataSource2";
+    public static String master="master";
+    public static String slave1="slave1";
+    public static String slave2="slave2";
+    public static String slave3="slave3";
+    public static String slave4="slave4";
+    public static String slave5="slave5";
+    public static String slave6="slave6";
 }

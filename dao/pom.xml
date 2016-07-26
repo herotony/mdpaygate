@@ -38,5 +38,10 @@
            <groupId>org.springframework</groupId>
            <artifactId>spring-context</artifactId>
        </dependency>
+       <!--用于扩展动态切换数据源接口-->
+       <dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-jdbc</artifactId>
+       </dependency>
    </dependencies>
 </project>

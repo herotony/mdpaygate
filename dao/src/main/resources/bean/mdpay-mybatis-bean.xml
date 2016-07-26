@@ -12,16 +12,41 @@
 			http://www.springframework.org/schema/tx/spring-tx.xsd"
        default-autowire="byName">
 
-    <bean id="writeDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <bean id="master" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName">
             <value>${dataSource.jndi.master}</value>
         </property>
     </bean>
-    <bean id="readDataSource1" class="org.springframework.jndi.JndiObjectFactoryBean">
+
+    <bean id="slave1" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName">
             <value>${dataSource.jndi.slave_1}</value>
         </property>
     </bean>
+
+    <bean id="dataSource" class="com.saosinhome.md.mdpaygate.dao.reposerviceimpl.DynamicDataSource">
+        <property name="targetDataSources">
+            <map>
+                <entry key="master" value-ref="master"/>
+                <entry key="slave1" value-ref="slave1"/>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="master"/>
+    </bean>
+
+    <bean id="dataSourceExchange" class="com.saosinhome.md.mdpaygate.dao.reposerviceimpl.DataSourceExchange"/>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value=""/>
+    </bean>
+    <aop:config>
+        <!--用于解析各方法的注解得到要切换的数据源-->
+        <aop:pointcut id="reposervice" expression="execution(* com.saosinhome.md.mdpaygate.dao.reposervice.*.*(..))"/>
+        <!--第一步切换数据源,order="1",属于前置拦截器-->
+        <aop:advisor advice-ref="dataSourceExchange" pointcut-ref="reposervice" order="1"/>
+        <!--第二步事务管理-->
+    </aop:config>
 
 
 </beans>
